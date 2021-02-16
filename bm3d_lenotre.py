@@ -1,6 +1,6 @@
 from itertools import product
 import numpy as np
-
+import pywt
 
 class BM3D:
     def __init__(self, noisy_img, **kwargs):
@@ -101,12 +101,10 @@ class BM3D:
         return (norm / N) ** 2
 
     def transformation_3d(self, group):
-        # TODO
-        pass
+        return(pywt.dwtn(array, 'bior1.5'))
 
     def itransformation_3d(self, group):
-        # TODO
-        pass
+        return(pywt.idwtn(array, 'bior1.5'))
 
     def hard_threshold(self, tf_3d):
         """Perform the hard thresholding
